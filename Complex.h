@@ -15,7 +15,7 @@ namespace testclassesComplex
 		double imaginary;
 
 	public:
-		Complex();
+		//Complex();
 		Complex(const Complex &other);
 		Complex(double real, double imaginarty);
 		const Complex &operator=(const Complex &other);

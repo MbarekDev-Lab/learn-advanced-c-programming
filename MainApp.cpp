@@ -44,15 +44,13 @@ int countString(vector<string> &texts , bool (*match)(const string&)) {
 	return tally;
 }
 
-
-
-
 class ParentX
 {
 private:
 	int one;
 
 public:
+	ParentX() : one(0) {}
 	ParentX(const ParentX& other): one(0) {
 		cout << " copy Parent " << endl;
 	}
@@ -67,16 +65,17 @@ class ChildX : public ParentX
 private:
 	int two;
 public:
-	ChildX(){ }
+	//ChildX(){ }
 	ChildX(): two(2){
-
 	}
 	void print() {
 		cout << "child" << endl;
 	}
 };
 
-
+void testFunc(Animal& an) {
+	an.run();
+}
 
 int main()
 {
@@ -84,25 +83,44 @@ int main()
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
-		cout << "Section 7 Function Pointer !\n";
 
-		// Demonstrating polymorphism
-		ChildX c1;
-		ParentX& p1 = c1;
-		p1.print(); // Should print "child"
-
-		ParentX p2 = ChildX();
-		p2.print(); // Should print "parent" due to object slicing
-	
+		cout << "Section 7 Functors !\n";
+		//MachTest pred;
+		string value = "lionn";
+		//cout << pred(value) << endl; //will be false becaus lionn != lion orOutput: 1 (true)
+		testclasses::MachTest m;
+		check(value, m);
 	
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
+		// Demonstrating polymorphism
+		// Abstraction in cpp
+		//Labrador2 labs[5];
+		Labrador2 lab;
+		//lab.speak();
+		//lab.run();
+		//lab.speak2();
 
+		Animal* animals[5];
+		animals[0] = &lab;
+		animals[0]->speak();
+		animals[1]->run();/*Exception thrown at 0x009D87CD in learn-advanced-c-programming.exe: 0xC0000005: Access violation reading location 0xCCCCCCCC.*/
+		animals[2]->run();
+		testFunc(lab);
+
+		//ChildX c1;
+		//ParentX& p1 = c1;
+		//p1.print(); // Should print "child"
+
+		//ParentX p2 = ChildX();
+		//p2.print(); // Should print "parent" due to object slicing
+
+		cout << "Section 7 Function Pointer !\n";
+		// beging of function pointer
 		testclasses::TESTFUNCS functionPointer;
 		vector<string>texts;
-
 		texts.push_back("one");
 		texts.push_back("three");
 		cout << functionPointer.match("one") << "\n" << endl;
@@ -115,7 +133,6 @@ int main()
 		cout << count_if(texts.begin(), texts.end(), matchP) << endl;
 		cout << countString(texts, match) << endl;
 
-
 		//test(3,"");
 		void (*pTest)(int, string);
 		pTest = &test;
@@ -124,16 +141,16 @@ int main()
 		//void (*pTest)(int,string) = test;
 
 		// test call the function 
-		//(*pTest)(2,"mbarek");
+		(*pTest)(2,"mbarek");
 		//cout << countString(texts, pTest) << endl;
 
-		/*
-			functionPointer.test();
-			void (*pTest)();
-			pTest = &functionPointer.test;
-			(*pTest)();
-		*/
+		functionPointer.test();
+		//void (*pTest)();
+		//pTest = &functionPointer.test;
+		//(*pTest)();
 
+		//void (*pTestMethod)() = &functionPointer.test;
+		//(*pTestMethod)();
 
 
 		cout << "Section 6 Template Classes and Functions!\n";

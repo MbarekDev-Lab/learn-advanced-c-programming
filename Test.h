@@ -5,6 +5,68 @@
 using namespace std;
 namespace testclasses {
 
+	class TestFunctors {
+		virtual bool operator()(string& text) = 0;
+		virtual ~TestFunctors() {}
+	};
+
+	// Functor Implimentation :
+	struct MachTest : TestFunctors {
+		virtual bool operator()(string& text) {
+			return text == "lion";
+		}
+	};
+
+	void check(string text, TestFunctors &testFunctors) {
+		if (testFunctors(text)) {
+			cout << "No mach ." << endl;
+
+		}
+		else {
+			cout << " mach." << endl;
+		}
+	}
+
+	class Animal {
+	public:
+		virtual void run() = 0;
+		virtual void speak() = 0;
+		virtual void speak2() = 0;
+	};
+
+	class Dog : public Animal {
+	public:
+		virtual void speak() {
+			cout << " Woof !" << endl;
+		}
+
+		virtual void run() {
+			cout << "Dog is running " << endl;
+		}
+	};
+
+	class Labrador : public Dog {
+	public:
+		virtual void run() {
+			cout << "Labrador is running " << endl;
+		}
+	};
+
+	class Labrador2 : public Labrador {
+	public:
+		Labrador2() {
+			cout << "new Labrador2 " << endl;
+		}
+		virtual void speak2() {
+			cout << "Labradord is running " << endl;
+		}
+		virtual void run() {
+			cout << "Labrador2 is running " << endl;
+		}
+	};
+
+
+
 	class Parent
 	{
 	public:
