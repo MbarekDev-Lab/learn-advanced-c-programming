@@ -9,6 +9,7 @@
 #include<stack>
 #include<queue>
 #include <algorithm>
+#include <array>
 
 // mein includes
 #include "MyExiption.h"
@@ -83,18 +84,58 @@ int main()
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
+		cout << "Section 8 C++ 11 new features !\n";
 
-		cout << "Section 7 Functors !\n";
-		//MachTest pred;
-		string value = "lionn";
-		//cout << pred(value) << endl; //will be false becaus lionn != lion orOutput: 1 (true)
-		testclasses::MachTest m;
-		check(value, m);
+		auto texts1 = { "one", "two", "three" };
+		initializer_list<const char*> texts2 = { "one", "two", "three" };
+		const char* texts3[] = {"one", "two", "three"};
+		string texts4[] = {"one", "two", "three"};
+		array<const char*, 3> texts5 = { "one", "two", "three" };
+
+		for (const auto& txt : texts1) {
+			cout << txt << endl;
+		}
+		for (const auto& txt : texts2) {
+			cout << txt << endl;
+		}
+		for (const auto& txt : texts3) {
+			cout << txt << endl;
+		}
+		for (const auto& txt : texts4) {
+			cout << txt << endl;
+		}
+		for (const auto& txt : texts5) {
+			std::cout << txt << std::endl;
+		}
+
+
 	
+
+
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
+
+
+
+		TestCPP11 cpp11;
+		cout << cpp11.test(1, 2) << endl;
+		cout << cpp11.testGet() << endl;
+		//string value;
+		auto value = "";
+		decltype(value) name = "Mbarek";
+		cout << "valuer type : " << typeid(value).name() << " -> " << name << endl;
+
+		cout << "Section 7 Functors !\n";
+		//MachTest pred;
+		string value2 = "lionn";
+		//cout << pred(value) << endl; //will be false becaus lionn != lion orOutput: 1 (true)
+		//testclasses::MachTest m;
+		//check(value, m);
+
 		// Demonstrating polymorphism
 		// Abstraction in cpp
 		//Labrador2 labs[5];
@@ -117,7 +158,7 @@ int main()
 		//ParentX p2 = ChildX();
 		//p2.print(); // Should print "parent" due to object slicing
 
-		cout << "Section 7 Function Pointer !\n";
+		cout << "Section 5 Function Pointer !\n";
 		// beging of function pointer
 		testclasses::TESTFUNCS functionPointer;
 		vector<string>texts;

@@ -5,19 +5,52 @@
 using namespace std;
 namespace testclasses {
 
+	class TestCPP11
+	{
+	public:
+		TestCPP11();
+		~TestCPP11();
+	
+		// allowing the return type with the arrow
+		template<class T, class S>
+		auto test(T value1 , S value2) -> decltype(value1, value2) {
+			return value1 + value2;
+		}
+
+		int get() {
+			return 999;
+		}
+
+		auto testGet() -> decltype(get()){
+			return get();
+		}
+
+
+	private:
+
+	};
+
+	TestCPP11::TestCPP11()
+	{
+	}
+
+	TestCPP11::~TestCPP11()
+	{
+	}
+
 	class TestFunctors {
 		virtual bool operator()(string& text) = 0;
 		virtual ~TestFunctors() {}
 	};
 
-	// Functor Implimentation :
+	// Functor Implimentation 
+	/*
 	struct MachTest : TestFunctors {
 		virtual bool operator()(string& text) {
 			return text == "lion";
 		}
 	};
-
-	void check(string text, TestFunctors &testFunctors) {
+	 void check(string text, TestFunctors& testFunctors) {
 		if (testFunctors(text)) {
 			cout << "No mach ." << endl;
 
@@ -26,6 +59,7 @@ namespace testclasses {
 			cout << " mach." << endl;
 		}
 	}
+	*/
 
 	class Animal {
 	public:
