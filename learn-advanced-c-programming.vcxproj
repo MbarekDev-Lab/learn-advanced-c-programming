@@ -135,6 +135,7 @@
     <ClInclude Include="ClassPerson.h" />
     <ClInclude Include="Complex.h" />
     <ClInclude Include="PersonTest.h" />
+    <ClInclude Include="ring.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="MyExiption.h" />

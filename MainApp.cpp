@@ -19,6 +19,7 @@
 #include "PersonTest.h"
 #include "AdvacedCPP.h"
 #include "Complex.h"
+#include "ring.h"
 
 using namespace std;
 using namespace testclasses;
@@ -84,13 +85,35 @@ int main()
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
+		ring<int>::iterator it;
+		it.print();
+
+		/*
+			cout << "Section 8 C++ 11 new features !\n";
+			ring<string>textring(3);
+			textring.add("one");
+			textring.add("two");
+			textring.add("three");
+			textring.add("four");
+			for (int i = 0; textring.size(); ++i) {
+				cout << textring.get(i) << endl;
+			}
+		*/
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
 		cout << "Section 8 C++ 11 new features !\n";
 
 		auto texts1 = { "one", "two", "three" };
 		initializer_list<const char*> texts2 = { "one", "two", "three" };
-		const char* texts3[] = {"one", "two", "three"};
-		string texts4[] = {"one", "two", "three"};
+		const char* texts3[] = { "one", "two", "three" };
+		string texts4[] = { "one", "two", "three" };
 		array<const char*, 3> texts5 = { "one", "two", "three" };
+		vector<int> numbersF;
+		numbersF.push_back(5);
+		numbersF.push_back(6);
+		numbersF.push_back(7);
 
 		for (const auto& txt : texts1) {
 			cout << txt << endl;
@@ -107,19 +130,13 @@ int main()
 		for (const auto& txt : texts5) {
 			std::cout << txt << std::endl;
 		}
-
-
-	
-
-
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
-
-
-
+		for (auto num : numbersF) {
+			cout << num << endl;
+		}
+		string hey = "hello";
+		for (auto s : hey) {
+			cout << s << endl;
+		}
 
 		TestCPP11 cpp11;
 		cout << cpp11.test(1, 2) << endl;
@@ -458,9 +475,7 @@ int main()
 
 		for (map<string, int>::iterator it = ages.begin(); it != ages.end(); it++)
 		{
-
 			std::cout << it->first << ":" << it->second << endl;
-
 			//pair<string, int> age = *it;
 			//cout << age.first << ": " << age.second << endl;
 		}

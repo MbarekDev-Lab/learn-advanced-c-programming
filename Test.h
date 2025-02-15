@@ -5,6 +5,7 @@
 using namespace std;
 namespace testclasses {
 
+
 	class TestCPP11
 	{
 	public:
