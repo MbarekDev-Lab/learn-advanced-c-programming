@@ -85,19 +85,23 @@ int main()
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
-		ring2<int>::iterator2 it;
-		it.print();
+		cout << "Section 8 C++ 11 new features !\n";
+		ring<string>textring(4);
+		textring.add("one");
+		textring.add("two");
+		textring.add("three");
+		textring.add("four");
+
+		for (int i = 0; textring.size(); ++i) {
+			cout << textring.get(i) << endl;
+		}
 
 		/*
-			cout << "Section 8 C++ 11 new features !\n";
-			ring<string>textring(3);
-			textring.add("one");
-			textring.add("two");
-			textring.add("three");
-			textring.add("four");
-			for (int i = 0; textring.size(); ++i) {
-				cout << textring.get(i) << endl;
-			}
+		 ring<int>::iterator it;
+		it.print();
+		ring2<int>::iterator2 it2;
+		it2.print();
+			
 		*/
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
