@@ -86,29 +86,36 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
-		ring<string>textring(4);
-		textring.add("one");
-		textring.add("two");
-		textring.add("three");
-		textring.add("four");
+		cout << "Making Classes iterable !\n";
 
-		for (int i = 0; textring.size(); ++i) {
-			cout << textring.get(i) << endl;
-		}
 
-		/*
-		 ring<int>::iterator it;
-		it.print();
-		ring2<int>::iterator2 it2;
-		it2.print();
-			
-		*/
+
+
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
 
+		// A Ring Buffer Class!
+		ring<string>textring(3);
+		textring.add("one");
+		textring.add("two");
+		textring.add("three");
+		textring.add("four"); // - "four" overwrites "one".
+		textring.add("five"); // - "five" overwrites "two".
+		//textring.add("six");
+		for (int i = 0; i < textring.size(); ++i) {
+			cout << textring.get(i) << endl;
+		}
+		/*
+		 ring<int>::iterator it;
+		it.print();
+		ring2<int>::iterator2 it2;
+		it2.print();
+		*/
+
+		// Nested Template Classes
 		auto texts1 = { "one", "two", "three" };
 		initializer_list<const char*> texts2 = { "one", "two", "three" };
 		const char* texts3[] = { "one", "two", "three" };
