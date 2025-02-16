@@ -85,7 +85,7 @@ int main()
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
-		ring<int>::iterator it;
+		ring2<int>::iterator2 it;
 		it.print();
 
 		/*

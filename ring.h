@@ -18,34 +18,20 @@ class ring<T>::iterator {
 
 template<class T>
 void ring<T>::iterator::print() {
-	cout << "Hello sss from iterator ring<int> ->: "<< T() << endl;
+	cout << "Hello Mbarek from iterator ring<int> ->: "<< T() << endl;
 }
 
-#endif //'!RING_H'
-
-
-#pragma once
-#ifndef RING_H
-#define RING_H
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
 template<class T>
-class ring {
+class ring2 {
 public:
-    class iterator;
-
-    ring(int size) : m_size(size), m_values(size), m_pos(0) {}
-
+    class iterator2;
+    ring2(int size) : m_size(size), m_values(size), m_pos(0) {}
     void add(T value) {
         m_values[m_pos++] = value;
         if (m_pos == m_size) {
             m_pos = 0;
         }
     }
-
     T get(int pos) const {
         return m_values[pos];
     }
@@ -53,7 +39,6 @@ public:
     int size() const {
         return m_size;
     }
-
 private:
     int m_size;
     vector<T> m_values;
@@ -61,14 +46,17 @@ private:
 };
 
 template<class T>
-class ring<T>::iterator {
+class ring2<T>::iterator2 {
 public:
     void print();
 };
 
 template<class T>
-void ring<T>::iterator::print() {
-    cout << "Hello from iterator" << endl;
+void ring2<T>::iterator2::print() {
+    cout << "Hello Mbarek from iterator2" << endl;
 }
 
-#endif // RING_H
+#endif //'!RING_H'
+
+
+
