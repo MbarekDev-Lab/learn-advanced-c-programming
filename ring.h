@@ -26,6 +26,15 @@ public:
         return m_size;
     }
 
+
+    iterator begin() {
+        return iterator(0,*this);// reference object in the class ring 
+    }
+    iterator end() {
+        return iterator(m_size, *this);// 
+    }
+
+
     void add(T value) {
         //if [m_pos++] must be post increament :
         m_values[m_pos++] = value;
@@ -47,16 +56,31 @@ public:
 
 };
 
-template<class T>
-class ring<T>::iterator {
-	public:
-		void print();
-};
+
 
 template<class T>
+class ring<T>::iterator {
+private:
+    int m_pos;
+    ring m_ring;
+
+	public:
+        iterator(int pos. ring &aring):m_pos(pos), m_ring(aring) {
+
+        }
+
+
+/*
+template<class T>
+class ring<T>::iterator {
+ public:
+   void print();
+};
+  template<class T>
 void ring<T>::iterator::print() {
-	cout << "Hello Mbarek from iterator ring<int> ->: "<< T() << endl;
+    cout << "Hello Mbarek from iterator ring<int> ->: " << T() << endl;
 }
+*/
 
 template<class T>
 class ring2 {
