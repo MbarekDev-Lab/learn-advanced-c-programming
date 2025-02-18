@@ -2,46 +2,42 @@
 #ifndef RING_H
 #define RING_H
 
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 template<class T>
 class ring {
-
 private:
     int m_pos;
     int m_size;
-	T* m_values;
+    T* m_values;
 
 public:
-	class iterator;
+    class iterator;
+
 public:
     ring(int size) : m_pos(0), m_size(size), m_values(NULL) {
         m_values = new T[size];
     }
+
     ~ring() {
-        delete[]m_values;//size = 0x00007ff7b31e8ba0 {learn-advanced-c-programming.exe!ring<std::string>::size(void)}
+        delete[] m_values;
     }
 
     int size() {
         return m_size;
     }
 
-
     iterator begin() {
-        return iterator(0,*this);// reference object in the class ring 
-    }
-    iterator end() {
-        return iterator(m_size, *this);// 
+        return iterator(0, *this);
     }
 
+    iterator end() {
+        return iterator(m_size, *this);
+    }
 
     void add(T value) {
-        //if [m_pos++] must be post increament :
         m_values[m_pos++] = value;
-        /*// or
-         m_values[m_pos] = value;
-            m_pos++;
-		*/
         if (m_pos == m_size) {
             m_pos = 0;
         }
@@ -51,36 +47,28 @@ public:
         return m_values[pos];
     }
 
+    class iterator {
+    private:
+        int m_pos;
+        ring& m_ring;
 
+    public:
+        iterator(int pos, ring& aring) : m_pos(pos), m_ring(aring) {}
 
-
-};
-
-
-
-template<class T>
-class ring<T>::iterator {
-private:
-    int m_pos;
-    ring m_ring;
-
-	public:
-        iterator(int pos. ring &aring):m_pos(pos), m_ring(aring) {
-
+        iterator& operator++() {
+            m_pos++;
+            return *this;
         }
 
+        T& operator*() {
+            return m_ring.get(m_pos);
+        }
 
-/*
-template<class T>
-class ring<T>::iterator {
- public:
-   void print();
+        bool operator!=(const iterator& other) const {
+            return m_pos != other.m_pos;
+        }
+    };
 };
-  template<class T>
-void ring<T>::iterator::print() {
-    cout << "Hello Mbarek from iterator ring<int> ->: " << T() << endl;
-}
-*/
 
 template<class T>
 class ring2 {
@@ -100,6 +88,7 @@ public:
     int size() const {
         return m_size;
     }
+
 private:
     int m_size;
     vector<T> m_values;
@@ -117,7 +106,4 @@ void ring2<T>::iterator2::print() {
     cout << "Hello Mbarek from iterator2" << endl;
 }
 
-#endif //'!RING_H'
-
-
-
+#endif // RING_H

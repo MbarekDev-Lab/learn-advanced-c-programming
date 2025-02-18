@@ -92,9 +92,9 @@ int main()
 		 makingclassiterrable.add("Two");
 		 makingclassiterrable.add("Three");
 
-		 for (ring < string)::iterator it = makingclassiterrable.begin(); it != makingclassiterrable.end(); it++){
-			 cout << *t << endl;
-		 }
+		// for (ring <string>::iterator it = makingclassiterrable.begin(); it != makingclassiterrable.end(); it++){
+			// cout << *t << endl;
+		 //}
 		 cout << endl;
 		 for (string value : makingclassiterrable) {
 			 cout << value << endl;
