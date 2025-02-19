@@ -87,23 +87,23 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 		cout << "Making Classes iterable !\n";
+
 		ring<string> makingclassiterrable(3);
 		 makingclassiterrable.add("One");
 		 makingclassiterrable.add("Two");
 		 makingclassiterrable.add("Three");
 
-		// for (ring <string>::iterator it = makingclassiterrable.begin(); it != makingclassiterrable.end(); it++){
-			// cout << *t << endl;
-		 //}
+		 for (ring <string>::iterator classIterable = makingclassiterrable.begin(); classIterable != makingclassiterrable.end(); classIterable++){
+			 cout << *classIterable << endl;
+		 }
 		 cout << endl;
-		 for (string value : makingclassiterrable) {
+		 for (auto value : makingclassiterrable) {
 			 cout << value << endl;
 		 }
 
-
-
-
-
+		 for (string value : makingclassiterrable) {
+			 cout << value << endl;
+		 }
 
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;

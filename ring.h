@@ -55,9 +55,17 @@ public:
     public:
         iterator(int pos, ring& aring) : m_pos(pos), m_ring(aring) {}
 
+        // Pre-increment operator
         iterator& operator++() {
             m_pos++;
             return *this;
+        }
+
+        // Post-increment operator
+        iterator operator++(int) {
+            iterator temp = *this;
+            ++(*this);
+            return temp;
         }
 
         T& operator*() {
