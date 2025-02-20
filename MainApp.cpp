@@ -86,30 +86,46 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
-		cout << "Making Classes iterable !\n";
 
-		ring<string> makingclassiterrable(3);
-		 makingclassiterrable.add("One");
-		 makingclassiterrable.add("Two");
-		 makingclassiterrable.add("Three");
 
-		 for (ring <string>::iterator classIterable = makingclassiterrable.begin(); classIterable != makingclassiterrable.end(); classIterable++){
-			 cout << *classIterable << endl;
-		 }
-		 cout << endl;
-		 for (auto value : makingclassiterrable) {
-			 cout << value << endl;
-		 }
-
-		 for (string value : makingclassiterrable) {
-			 cout << value << endl;
-		 }
+	
 
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
+
+
+		cout << "Initialization  !\n";
+		vector<int> numbers{ 1,2,3,4 };
+		cout << numbers[2] << endl;
+
+		Initialization98 init{ 1,2,3,4,5,6,7,8,9,10 };
+		init.print({ "one", "two", "three", "four" });
+		init.print();
+
+		Initialization98 init2(100);
+		init2.print();
+
+
+		cout << "Making Classes iterable !\n";
+		ring<string> makingclassiterrable(3);
+		makingclassiterrable.add("One");
+		makingclassiterrable.add("Two");
+		makingclassiterrable.add("Three");
+
+		for (ring <string>::iterator classIterable = makingclassiterrable.begin(); classIterable != makingclassiterrable.end(); classIterable++) {
+			cout << *classIterable << endl;
+		}
+		cout << endl;
+		for (auto value : makingclassiterrable) {
+			cout << value << endl;
+		}
+
+		for (string value : makingclassiterrable) {
+			cout << value << endl;
+		}
 
 		// A Ring Buffer Class!
 		ring<string>textring(3);

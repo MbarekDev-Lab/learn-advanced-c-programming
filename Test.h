@@ -1,10 +1,65 @@
 #pragma once
 #include <iostream>
 #include<string>
+#include<initializer_list>
 
 using namespace std;
 namespace testclasses {
 
+
+	class Initialization98
+	{
+		int id{ 3 };
+		string text{ "hello" };
+	public:
+
+		/*
+			 // Default constructor
+			Initialization98() = default;
+
+			// Copy constructor
+			Initialization98(const Initialization98& other) = default;
+
+			// Copy assignment operator
+			Initialization98& operator=(const Initialization98& other) = default;
+
+			// Parameterized constructor
+			Initialization98(int id, std::string text) : id(id), text(text) {}
+		*/
+
+		Initialization98() = default;
+		//Initialization98(const Initialization98& other) = default;
+		Initialization98(const Initialization98& other) = delete;
+		//Initialization98& operator=(const Initialization98& other) = default;
+		Initialization98& operator=(const Initialization98& other) = delete;
+
+		Initialization98& operator=(const Initialization98& other) {
+			if (this != &other) { // Check for self-assignment
+				this->id = other.id;
+				this->text = other.text;
+			}
+			return *this;
+		}
+
+		Initialization98(initializer_list<int> text) {
+			for (auto val : text) {
+			cout << val << endl;
+			}
+		}
+
+		Initialization98(int id) : id(id){
+		}
+
+		void print(initializer_list<string> anytext) {
+			for (auto val : anytext) {
+				cout << val << endl;
+			}
+		}
+
+		void print() {
+			cout << id << ": " << text << endl;
+		}
+	};
 
 	class TestCPP11
 	{
