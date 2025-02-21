@@ -87,6 +87,33 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
+		TestLamdaexpressions testLamdaexpressions;
+		auto func = []() {cout << " Lamda expression ... " << endl; };
+		[]() {cout << " Lamda expression 	[]()... " << endl; }();
+
+		testLamdaexpressions.test1(func);
+		func();
+		testLamdaexpressions.test1([]() {cout << " Lamda expression again ... " << endl; });
+
+		{
+			cout << " Lambda expression Parameteres and return types ... " << endl;
+		auto pGHreet = [](string name) {cout << " Hello " << name<< endl; };
+
+		pGHreet("Mbarek");
+
+		testLamdaexpressions.test2([](string name) {cout << " Hello " << name << endl; });
+		testLamdaexpressions.test2(pGHreet);
+
+		auto pDivide = [](double a, double b) -> double { 
+			if (b == 0.0) {
+				return 0.0; // throw MyException("Divide by zero"); infinit value
+			}
+			return a / b;
+			};
+		
+		cout << pDivide(10.0, 0.0) << endl;
+		
+		testLamdaexpressions.runDivide(pDivide);
 
 	
 
@@ -609,33 +636,33 @@ int main()
 		grid[2] = { 4, 4, 4 }; // Third row
 		// end of tow dimensional vector
 
-		vector<double> numbers(20);
-		int capacity = numbers.capacity();
+		vector<double> numbersD(20);
+		int capacity = numbersD.capacity();
 		int size = numberslist.size();
 
 		cout << "Capacity: " << capacity << endl;
 		cout << "Size    : " << size << "\n \n" << endl;
 
 		for (int i = 0; i < 10; i++) {
-			if (numbers.capacity() != capacity) {
-				capacity = numbers.capacity();
+			if (numbersD.capacity() != capacity) {
+				capacity = numbersD.capacity();
 				cout << "Capacity: " << capacity << endl;
 			}
 			numberslist.push_back(i);
 
-			cout << "Capacity:  " << numbers.capacity() << "  Size: " << numbers.size() << endl;
+			cout << "Capacity:  " << numbersD.capacity() << "  Size: " << numbersD.size() << endl;
 		}
 
 
 		// the size is the acual number of the elements in the vector
-		numbers.resize(100); // resize the vector to 100 elements
-		cout << "Capacity after resize: " << numbers.capacity() << endl;
+		numbersD.resize(100); // resize the vector to 100 elements
+		cout << "Capacity after resize: " << numbersD.capacity() << endl;
 		cout << "Size after resize: " << numberslist.size() << endl;
 
 		// clear the vector
-		numbers.clear();
-		cout << "Size after clear    : " << numbers.size() << endl;
-		cout << "Capacity after clear: " << numbers.capacity() << endl;
+		numbersD.clear();
+		cout << "Size after clear    : " << numbersD.size() << endl;
+		cout << "Capacity after clear: " << numbersD.capacity() << endl;
 
 
 		// List string

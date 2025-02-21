@@ -7,6 +7,51 @@ using namespace std;
 namespace testclasses {
 
 
+	class TestLamdaexpressions {	
+
+	public:
+
+		TestLamdaexpressions() {
+			cout << "TestLamdaexpressions constructor" << endl;
+		}
+
+
+		void test1(void(*pFunc)()) {
+			pFunc();
+			/*
+			int one = 1;
+			int two = 2;
+			int three = 3;
+			// Capture one and two by value
+			[one, two]() {cout << one << ", " << two << endl; }();
+			// Capture all local variables by value
+			[=]() {cout << one << ", " << two << endl; }();
+			// Capture all local variables by value, but capture three by reference
+			[=, &three]() {three = 7; cout << one << ", " << two << endl; }();
+			// Capture all local variables by reference
+			[&]() {three = 7; two = 8; cout << one << ", " << two << endl; }();
+			// Capture all local variables by reference, but two and three by value
+			[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
+			// Capture all local variables by reference, but two and three by value
+			[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
+			// Capture all local variables by reference, but two and three by value
+			[=, &two, &three]() {one = 100; cout << one << ", " << two << endl; }();
+			*/
+		}
+		void test2(void(*greater)( string text)) {
+			greater("benraiss");
+			//cout << "value: " << value << ", text: " << text << endl;
+		}
+		void runDivide(double(*divide)(double a, double b)) {
+			auto r = divide(9, 3);
+			cout << r << endl;
+		}
+
+
+	};
+
+
+
 	class Initialization98
 	{
 		int id{ 3 };
@@ -31,7 +76,7 @@ namespace testclasses {
 		//Initialization98(const Initialization98& other) = default;
 		Initialization98(const Initialization98& other) = delete;
 		//Initialization98& operator=(const Initialization98& other) = default;
-		Initialization98& operator=(const Initialization98& other) = delete;
+		//Initialization98& operator=(const Initialization98& other) = delete;
 
 		Initialization98& operator=(const Initialization98& other) {
 			if (this != &other) { // Check for self-assignment
