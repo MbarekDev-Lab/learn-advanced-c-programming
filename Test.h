@@ -5,52 +5,70 @@
 
 using namespace std;
 namespace testclasses {
+	
+	class TestLamdaexpressions {
 
-
-	class TestLamdaexpressions {	
+	private:
+		int one{1};
+		int two{2};
 
 	public:
-
 		TestLamdaexpressions() {
 			cout << "TestLamdaexpressions constructor" << endl;
 		}
 
+		void run() { // cupturing this with lambdas
+			int three = 3;
+			int four = 4;
+			//auto pLambda = [this, three , four] {
+			//auto pLambda = [=, this, three, four] { // we cannot do this->one = 111; because this is read only
+			auto pLambda = [&, this](int six) { // passing the values by reference
+				//one = 111;
+				cout << "one "<<one << endl;
+				cout << "two "<<two << endl;
+				cout << "three "<<three << endl;
+				cout << "four " <<four << endl;
+					//cout << six << endl;
+				}; // we can also use [=] to capture all the variables by value
+			pLambda(6); // we can pass the value to the lambda function (6)
+		}
 
 		void test1(void(*pFunc)()) {
+			
 			pFunc();
+		
 			/*
-			int one = 1;
-			int two = 2;
-			int three = 3;
-			// Capture one and two by value
-			[one, two]() {cout << one << ", " << two << endl; }();
-			// Capture all local variables by value
-			[=]() {cout << one << ", " << two << endl; }();
-			// Capture all local variables by value, but capture three by reference
-			[=, &three]() {three = 7; cout << one << ", " << two << endl; }();
-			// Capture all local variables by reference
-			[&]() {three = 7; two = 8; cout << one << ", " << two << endl; }();
-			// Capture all local variables by reference, but two and three by value
-			[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
-			// Capture all local variables by reference, but two and three by value
-			[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
-			// Capture all local variables by reference, but two and three by value
-			[=, &two, &three]() {one = 100; cout << one << ", " << two << endl; }();
+				int one = 1;
+				int two = 2;
+				int three = 3;
+				// Capture one and two by value
+				[one, two]() {
+				cout << one << ", " << two << endl; }();
+				// Capture all local variables by value
+				[=]() {cout << one << ", " << two << endl; }();
+				// Capture all local variables by value, but capture three by reference
+				[=, &three]() {three = 7; cout << one << ", " << two << endl; }();
+				// Capture all local variables by reference
+				[&]() {three = 7; two = 8; cout << one << ", " << two << endl; }();
+				// Capture all local variables by reference, but two and three by value
+				[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
+				// Capture all local variables by reference, but two and three by value
+				[&, two, three]() {one = 100; cout << one << ", " << two << endl; }();
+				// Capture all local variables by reference, but two and three by value
+				[=, &two, &three]() {one = 100; cout << one << ", " << two << endl; }();
 			*/
 		}
+		
 		void test2(void(*greater)( string text)) {
 			greater("benraiss");
 			//cout << "value: " << value << ", text: " << text << endl;
 		}
+		
 		void runDivide(double(*divide)(double a, double b)) {
 			auto r = divide(9, 3);
 			cout << r << endl;
 		}
-
-
 	};
-
-
 
 	class Initialization98
 	{

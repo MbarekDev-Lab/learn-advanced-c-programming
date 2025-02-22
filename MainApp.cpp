@@ -86,6 +86,21 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
+		
+		cout << "Capture with lambdas !\n";
+		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
+		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
+		TestLamdaexpressions test;
+		test.run();
+		
+
+
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
 
 		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
 		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
@@ -94,7 +109,7 @@ int main()
 		int one = 1;
 		int two = 2;
 		int three = 3;
-		
+
 		// = capture by value ||  & capture by reference
 		// Capture one and two by value
 		[one, two]() {  cout << one << two << endl; }();
@@ -102,24 +117,18 @@ int main()
 		// Capture all local variables by value
 		[=]() {cout << one << two << endl; }();
 
-		[one]() {cout << one +3 << one << endl; }();
+		[one]() {cout << one + 3 << one << endl; }();
 
 		// Capture all local variables by value, but capture three by reference
 		[=, &three]() {three = 7; cout << one << two << endl; }();
 		cout << three << endl;
-		 
+
 		// Capture all local variables by reference
 		[&]() {three = 7; two = 8; cout << one << two << endl; }();
 
 		// Capture all local variables by reference, but two and three by value
 		[&, two, three]() {one = 100; cout << one << two << endl; }();
-	
 
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
 
 		cout << " Lambda expression Parameteres and return types ... " << endl;
 		TestLamdaexpressions testLamdaexpressions;
