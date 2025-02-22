@@ -93,7 +93,7 @@ int main()
 
 		testLamdaexpressions.test1(func);
 		func();
-		testLamdaexpressions.test1([]() {cout << " Lamda expression again ... " << endl; });
+		testLamdaexpressions.test1([]() {cout << " Lamda expression  the return type  ... " << endl; });
 
 		{
 			cout << " Lambda expression Parameteres and return types ... " << endl;
@@ -104,7 +104,7 @@ int main()
 		testLamdaexpressions.test2([](string name) {cout << " Hello " << name << endl; });
 		testLamdaexpressions.test2(pGHreet);
 
-		auto pDivide = [](double a, double b) -> double { 
+		auto pDivide = [](double a, double b) -> double { // -> double is the return type
 			if (b == 0.0) {
 				return 0.0; // throw MyException("Divide by zero"); infinit value
 			}
