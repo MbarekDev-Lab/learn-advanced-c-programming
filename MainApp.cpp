@@ -87,34 +87,32 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
-		TestLamdaexpressions testLamdaexpressions;
-		auto func = []() {cout << " Lamda expression ... " << endl; };
-		[]() {cout << " Lamda expression 	[]()... " << endl; }();
+		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
+		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
 
-		testLamdaexpressions.test1(func);
-		func();
-		testLamdaexpressions.test1([]() {cout << " Lamda expression  the return type  ... " << endl; });
-
-		{
-			cout << " Lambda expression Parameteres and return types ... " << endl;
-		auto pGHreet = [](string name) {cout << " Hello " << name<< endl; };
-
-		pGHreet("Mbarek");
-
-		testLamdaexpressions.test2([](string name) {cout << " Hello " << name << endl; });
-		testLamdaexpressions.test2(pGHreet);
-
-		auto pDivide = [](double a, double b) -> double { // -> double is the return type
-			if (b == 0.0) {
-				return 0.0; // throw MyException("Divide by zero"); infinit value
-			}
-			return a / b;
-			};
+		cout << " Lambda  Capture Expressions  ...	[](){}(); " << endl;
+		int one = 1;
+		int two = 2;
+		int three = 3;
 		
-		cout << pDivide(10.0, 0.0) << endl;
-		
-		testLamdaexpressions.runDivide(pDivide);
+		// = capture by value ||  & capture by reference
+		// Capture one and two by value
+		[one, two]() {  cout << one << two << endl; }();
 
+		// Capture all local variables by value
+		[=]() {cout << one << two << endl; }();
+
+		[one]() {cout << one +3 << one << endl; }();
+
+		// Capture all local variables by value, but capture three by reference
+		[=, &three]() {three = 7; cout << one << two << endl; }();
+		cout << three << endl;
+		 
+		// Capture all local variables by reference
+		[&]() {three = 7; two = 8; cout << one << two << endl; }();
+
+		// Capture all local variables by reference, but two and three by value
+		[&, two, three]() {one = 100; cout << one << two << endl; }();
 	
 
 		//End of active code 
@@ -123,6 +121,30 @@ int main()
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
 
+		cout << " Lambda expression Parameteres and return types ... " << endl;
+		TestLamdaexpressions testLamdaexpressions;
+		auto func = []() {cout << " Lamda expression ... " << endl; };
+		[]() {cout << " Lamda expression 	[]()... " << endl; }();
+
+		testLamdaexpressions.test1(func);
+		func();
+		testLamdaexpressions.test1([]() {cout << " Lamda expression again ... " << endl; });
+		auto pGHreet = [](string name) {cout << " Hello " << name << endl; };
+
+		pGHreet("Mbarek");
+
+		testLamdaexpressions.test2([](string name) {cout << " Hello " << name << endl; });
+		testLamdaexpressions.test2(pGHreet);
+
+		auto pDivide = [](double a, double b) -> double {
+			if (b == 0.0) {
+				return 0.0; // throw MyException("Divide by zero"); infinit value
+			}
+			return a / b;
+			};
+
+		cout << pDivide(10.0, 0.0) << endl;
+		testLamdaexpressions.runDivide(pDivide);
 
 		cout << "Initialization  !\n";
 		vector<int> numbers{ 1,2,3,4 };
