@@ -1,4 +1,5 @@
 // learn-advanced-c-programming.cpp : This file contains the 'main' function. Program execution begins and ends there.
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,8 +9,10 @@
 #include<set>
 #include<stack>
 #include<queue>
-#include <algorithm>
 #include <array>
+#include <functional>	
+#include<algorithm>
+
 
 // mein includes
 #include "MyExiption.h"
@@ -24,6 +27,7 @@
 using namespace std;
 using namespace testclasses;
 using namespace testclassesComplex;
+
 
 
 // Custom function to count strings using a function pointer
@@ -77,7 +81,23 @@ public:
 
 void testFunc(Animal& an) {
 	an.run();
+};
+bool check(string &test) {
+	return test.size() == 3;
 }
+class {
+
+public:
+	bool operator()(string& text) {
+		return text == "lion";
+	}
+}checkStr;
+
+void checkFun(function<bool(string&)> check) {
+		string value = "lion";
+		cout << check(value) << endl;
+}
+
 
 int main()
 {
@@ -86,13 +106,51 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
+
+		// The Standerd function Types :
+		std::vector<int> vec = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		// Count the number of even numbers in the vector
+		int countEv = std::count_if(vec.begin(), vec.end(), [](int x) {
+			return x % 2 == 0;
+			});
+		std::cout << "Number of even numbers: " << countEv << std::endl;
+	
+		int size = 4;
+		vector<string> vec2{ "one", "two", "three", "lion"};
+		int count = count_if(vec2.begin(), vec2.end(), [size](string test) {
+			return test.size() == size;
+			});
+		cout << count << endl;
+
+		count = count_if(vec2.begin(), vec2.end(), check);
+		cout << count << endl;
+
+		count = count_if(vec2.begin(), vec2.end(), checkStr);
+		cout << count << endl;
 		
-		cout << "Capture with lambdas !\n";
-		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
-		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
-		TestLamdaexpressions test;
-		test.run();
+		count = count_if(vec2.begin(), vec2.end(), checkStr);
+		cout << count << endl;
 		
+		auto lambda = [size](string test) {
+			return test.size() == size;
+			};
+
+		// passing a lambda to a function
+		checkFun(lambda);
+		// passing a functor to a function
+		checkFun(checkStr);
+
+		// passing a function to a function
+		//function<bool(string&)> checkF = check;
+		function<int(int, int)> add = [](int one, int two) {return one + two; };
+		count = add(7, 3);
+		cout << count << endl;
+
+		Increment incrementBy2(2);
+		for_each(vec.begin(), vec.end(), incrementBy2);
+		for (int i : vec) {
+			std::cout << i << " "; // Output: 3 4 5 6 7 8 9 10 11 12
+		}
 
 
 		//End of active code 
@@ -102,8 +160,12 @@ int main()
 		cout << "Section 8 C++ 11 new features !\n";
 
 
+
+		cout << "Capture with 'this' lambdas (cupturing this with lambdas)!\n";
 		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
 		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
+		TestLamdaexpressions Capture;
+		Capture.run();
 
 		cout << " Lambda  Capture Expressions  ...	[](){}(); " << endl;
 		int one = 1;

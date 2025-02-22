@@ -5,6 +5,20 @@
 
 using namespace std;
 namespace testclasses {
+
+
+	class Increment {
+	public:
+		Increment(int n) : num(n) {}
+
+		// Overload the function call operator
+		void operator()(int& element) const {
+			element += num;
+		}
+
+	private:
+		int num;
+	};
 	
 	class TestLamdaexpressions {
 
