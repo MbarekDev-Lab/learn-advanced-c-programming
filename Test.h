@@ -6,6 +6,70 @@
 using namespace std;
 namespace testclasses {
 
+	class ElisionAndOptimization { 
+	public:
+		ElisionAndOptimization() {
+			cout << "constructor" << endl;
+		}
+
+		ElisionAndOptimization(int i) {
+			cout << "parameterized constructor" << endl;
+		}
+
+		ElisionAndOptimization(const ElisionAndOptimization& other) {
+			cout << "copy constructor" << endl;
+		}
+
+		ElisionAndOptimization& operator=(const ElisionAndOptimization& other) {
+			cout << "assignment" << endl;
+			return *this;
+		}
+
+		~ElisionAndOptimization() {
+			cout << "destructor" << endl;
+		}
+
+		friend ostream& operator<<(ostream& out, const ElisionAndOptimization& test);
+	};
+
+	ostream& operator<<(ostream& out, const ElisionAndOptimization& test) {
+		out << "Hello from test";
+		return out;
+	}
+	ElisionAndOptimization getElisionAndOptimization() {
+		return ElisionAndOptimization();
+	}
+
+
+
+
+	class ParentDelegate {
+		int dogs{5};
+		string text{"hello"};
+	public:
+		ParentDelegate() : ParentDelegate("ParentDelegate") {
+			dogs = 5;
+			cout << "no parameter parent constructor" << endl;
+		}
+
+		ParentDelegate(string text) {
+			dogs = 5;
+			this->text = text;
+			cout << "string parent constructor" << endl;
+		}
+	};
+
+
+	class ChildDelegate : public ParentDelegate {
+	int cats;
+	public:
+		ChildDelegate() = default;
+	 
+
+	};
+
+
+
 
 	class Increment {
 	public:
@@ -31,7 +95,7 @@ namespace testclasses {
 			cout << "TestLamdaexpressions constructor" << endl;
 		}
 
-		void run() { // cupturing this with lambdas
+		void runLambda() { // cupturing this with lambdas
 			int three = 3;
 			int four = 4;
 			//auto pLambda = [this, three , four] {

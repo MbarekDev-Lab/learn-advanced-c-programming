@@ -13,7 +13,6 @@
 #include <functional>	
 #include<algorithm>
 
-
 // mein includes
 #include "MyExiption.h"
 #include "ClassPerson.h"
@@ -31,15 +30,15 @@ using namespace testclassesComplex;
 
 
 // Custom function to count strings using a function pointer
-bool match(const string& text) {
+bool static match(const string& text) {
 	return text == "one";
 }
 
-void test(int x, string y) {
+void static test(int x, string y) {
 	cout << " hello" << x << y << endl;
 }
 
-int countString(vector<string> &texts , bool (*match)(const string&)) {
+int static countString(vector<string> &texts , bool (*match)(const string&)) {
 	int tally=0;
 	for (size_t i = 0; i < texts.size(); i++)
 	{
@@ -79,21 +78,20 @@ public:
 	}
 };
 
-void testFunc(Animal& an) {
+void static testFunc(Animal& an) {
 	an.run();
 };
-bool check(string &test) {
+bool static check(string &test) {
 	return test.size() == 3;
 }
 class {
-
 public:
 	bool operator()(string& text) {
 		return text == "lion";
 	}
 }checkStr;
 
-void checkFun(function<bool(string&)> check) {
+void static checkFun(function<bool(string&)> check) {
 		string value = "lion";
 		cout << check(value) << endl;
 }
@@ -107,6 +105,38 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
+
+		cout << "Copy elision !\n";
+
+		ElisionAndOptimization test1 = getElisionAndOptimization();
+
+		cout << test1 << endl;
+
+		vector<ElisionAndOptimization> vec;
+		vec.push_back(ElisionAndOptimization());
+
+
+
+		//  using mutable to allow the cats to be change
+
+		// Delegate Constructor
+		//ParentDelegate parent("Mbarek");
+		//ChildDelegate child;
+
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+		
+		//  using mutable to allow the cats to be changed
+		int  cats = 5;
+		[]() {}(); // empty lambda
+		[cats]()mutable { // to allow the cats to be changed
+			cats = 8;
+			cout << cats << endl;
+			}();
+
 		// The Standerd function Types :
 		std::vector<int> vec = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		// Count the number of even numbers in the vector
@@ -114,9 +144,9 @@ int main()
 			return x % 2 == 0;
 			});
 		std::cout << "Number of even numbers: " << countEv << std::endl;
-	
+
 		int size = 4;
-		vector<string> vec2{ "one", "two", "three", "lion"};
+		vector<string> vec2{ "one", "two", "three", "lion" };
 		int count = count_if(vec2.begin(), vec2.end(), [size](string test) {
 			return test.size() == size;
 			});
@@ -127,10 +157,10 @@ int main()
 
 		count = count_if(vec2.begin(), vec2.end(), checkStr);
 		cout << count << endl;
-		
+
 		count = count_if(vec2.begin(), vec2.end(), checkStr);
 		cout << count << endl;
-		
+
 		auto lambda = [size](string test) {
 			return test.size() == size;
 			};
@@ -152,20 +182,11 @@ int main()
 			std::cout << i << " "; // Output: 3 4 5 6 7 8 9 10 11 12
 		}
 
-
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
-
-
-
 		cout << "Capture with 'this' lambdas (cupturing this with lambdas)!\n";
 		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
 		// since c++ 20 [capture]<template_parameters>(parameters) -> return_type { function_body }
 		TestLamdaexpressions Capture;
-		Capture.run();
+		Capture.runLambda();
 
 		cout << " Lambda  Capture Expressions  ...	[](){}(); " << endl;
 		int one = 1;
@@ -731,7 +752,7 @@ int main()
 
 		vector<double> numbersD(20);
 		int capacity = numbersD.capacity();
-		int size = numberslist.size();
+		int  size2 = numberslist.size();
 
 		cout << "Capacity: " << capacity << endl;
 		cout << "Size    : " << size << "\n \n" << endl;
