@@ -6,6 +6,66 @@
 using namespace std;
 namespace testclasses {
 
+
+	class ConstructorsAndMemory {
+	private:
+		static const int SIZE = 100;
+		int *m_pBuffer;
+
+
+	public:
+		ConstructorsAndMemory()  {
+			cout << "No parameter constructor, Default Constructor" << endl;
+			m_pBuffer = new int[SIZE] {};
+			//memset(_pBuffer, 0, sizeof(int) * SIZE);
+		}
+
+		ConstructorsAndMemory(int data)  {
+			cout << "parameter constructor" << endl;
+
+			m_pBuffer = new int[SIZE] {};
+			for (int i = 0; i < SIZE; i++) {
+				m_pBuffer[i] = 7*data;
+			}
+
+		}
+
+		ConstructorsAndMemory(const ConstructorsAndMemory& other){
+			cout << "copy constructor" << endl;
+			m_pBuffer = new int[SIZE] {};
+			memcpy(m_pBuffer, other.m_pBuffer, SIZE * sizeof(int));
+
+		}
+
+		ConstructorsAndMemory& operator=(const ConstructorsAndMemory& other) {
+			cout << "assignment" << endl;
+			m_pBuffer = new int[SIZE] {};
+			memcpy(m_pBuffer, other.m_pBuffer, SIZE * sizeof(int));
+			return *this;
+		}
+
+		~ConstructorsAndMemory() {
+			cout << "destructor" << endl;
+			delete[] m_pBuffer;
+		}
+
+		friend ostream& operator<<(ostream& out, const ConstructorsAndMemory& test);
+	};
+
+	ostream& operator<<(ostream& out, const ConstructorsAndMemory& test) {
+		out << "Hello from test";
+		return out;
+	}
+
+	ostream& operator<<(ostream& out, const ConstructorsAndMemory& test) {
+		out << "Buffer contents: ";
+		for (int i = 0; i < ConstructorsAndMemory::SIZE; ++i) {
+			out << test.m_pBuffer[i] << " ";
+		}
+		return out;
+	}
+
+
 	class ElisionAndOptimization { 
 	public:
 		ElisionAndOptimization() {
@@ -67,9 +127,6 @@ namespace testclasses {
 	 
 
 	};
-
-
-
 
 	class Increment {
 	public:

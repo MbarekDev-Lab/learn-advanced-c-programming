@@ -105,13 +105,12 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
+		cout << "Constructor and Memory !\n";
+
 
 		cout << "Copy elision !\n";
-
-		ElisionAndOptimization test1 = getElisionAndOptimization();
-
-		cout << test1 << endl;
-
+		ElisionAndOptimization elisionandoptimization = getElisionAndOptimization();
+		cout << elisionandoptimization << endl;
 		vector<ElisionAndOptimization> vec;
 		vec.push_back(ElisionAndOptimization());
 
