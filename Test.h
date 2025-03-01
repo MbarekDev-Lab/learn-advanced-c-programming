@@ -64,6 +64,10 @@ namespace testclasses {
 		return out;
 	}
 
+	ConstructorsAndMemory getConstructorsAndMemory() {
+		return ConstructorsAndMemory();
+	}
+
 
 	class ElisionAndOptimization { 
 	public:

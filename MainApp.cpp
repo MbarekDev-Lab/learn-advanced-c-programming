@@ -106,6 +106,34 @@ int main()
 		cout << "Section 8 C++ 11 new features !\n";
 
 
+		cout << " Rvalues and LValues!\n";
+
+		ConstructorsAndMemory constructorsAndMemory = getConstructorsAndMemory();
+		cout << constructorsAndMemory << endl;
+
+		vector<ConstructorsAndMemory> lValVector;
+		lValVector.push_back(ConstructorsAndMemory());
+
+		int value1 = 7;
+		int* pValue1 = &value1;
+
+		//int* pValue2 = &7;
+
+		ConstructorsAndMemory* pConstructorsAndMemory = &constructorsAndMemory;
+		//ConstructorsAndMemory* pConstructorsAndMemory2 = &ConstructorsAndMemory();
+
+		int* pValue3 = &++value1;
+		cout << *pValue3 << endl;
+
+
+		//int* pValue4 = &value1++;
+		//int s = 7 + value1; //rvalue
+		
+		//int *s = &(7 + value1); 
+		cout << *s << endl;
+
+		int* pValue5 = &(value1++);
+		cout << s << endl;
 
 
 		
