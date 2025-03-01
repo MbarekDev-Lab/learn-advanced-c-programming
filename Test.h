@@ -12,7 +12,6 @@ namespace testclasses {
 		static const int SIZE = 100;
 		int *m_pBuffer;
 
-
 	public:
 		ConstructorsAndMemory()  {
 			cout << "No parameter constructor, Default Constructor" << endl;
@@ -52,10 +51,10 @@ namespace testclasses {
 		friend ostream& operator<<(ostream& out, const ConstructorsAndMemory& test);
 	};
 
-	ostream& operator<<(ostream& out, const ConstructorsAndMemory& test) {
-		out << "Hello from test";
-		return out;
-	}
+	//ostream& operator<<(ostream& out, const ConstructorsAndMemory& test) {
+	//	out << "Hello from test";
+	//	return out;
+	//}
 
 	ostream& operator<<(ostream& out, const ConstructorsAndMemory& test) {
 		out << "Buffer contents: ";

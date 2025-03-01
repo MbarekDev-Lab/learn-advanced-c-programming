@@ -105,30 +105,31 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
-		cout << "Constructor and Memory !\n";
-
-
-		cout << "Copy elision !\n";
-		ElisionAndOptimization elisionandoptimization = getElisionAndOptimization();
-		cout << elisionandoptimization << endl;
-		vector<ElisionAndOptimization> vec;
-		vec.push_back(ElisionAndOptimization());
 
 
 
-		//  using mutable to allow the cats to be change
-
-		// Delegate Constructor
-		//ParentDelegate parent("Mbarek");
-		//ChildDelegate child;
+		
 
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
+
+		cout << "Constructor and Memory !\n";
+		cout << "Copy elision !\n";
+		ElisionAndOptimization elisionandoptimization = getElisionAndOptimization();
+		cout << elisionandoptimization << endl;
+		vector<ElisionAndOptimization> vec3;
+		vec3.push_back(ElisionAndOptimization());
 		
 		//  using mutable to allow the cats to be changed
+
+		//Delegate Constructor
+		ParentDelegate parent("Mbarek");
+		ChildDelegate child;
+		
+		
 		int  cats = 5;
 		[]() {}(); // empty lambda
 		[cats]()mutable { // to allow the cats to be changed
@@ -176,10 +177,10 @@ int main()
 		cout << count << endl;
 
 		Increment incrementBy2(2);
-		for_each(vec.begin(), vec.end(), incrementBy2);
-		for (int i : vec) {
-			std::cout << i << " "; // Output: 3 4 5 6 7 8 9 10 11 12
-		}
+		//for_each(vec.begin(), vec.end(), incrementBy2);
+		//for (int i : vec) {
+		//	std::cout << i << " "; // Output: 3 4 5 6 7 8 9 10 11 12
+		//}
 
 		cout << "Capture with 'this' lambdas (cupturing this with lambdas)!\n";
 		// Lambda Capture Expressions [capture](parameters) -> return_type { function_body }
