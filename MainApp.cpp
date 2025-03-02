@@ -111,12 +111,13 @@ int main()
 		ConstructorsAndMemory constructorsAndMemory = getConstructorsAndMemory();
 		cout << constructorsAndMemory << endl;
 
+
 		vector<ConstructorsAndMemory> lValVector;
 		lValVector.push_back(ConstructorsAndMemory());
 
 		int value1 = 7;
 		int* pValue1 = &value1;
-
+		//is not allowed
 		//int* pValue2 = &7;
 
 		ConstructorsAndMemory* pConstructorsAndMemory = &constructorsAndMemory;
