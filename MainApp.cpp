@@ -108,7 +108,11 @@ int main()
 		vector<ConstructorsAndMemory> vec;
 		vec.push_back(ConstructorsAndMemory());
 
+		// Move assignment operator
+		ConstructorsAndMemory moveAssignment;
 
+		moveAssignment = getConstructorsAndMemory();
+		
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}

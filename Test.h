@@ -67,9 +67,19 @@ namespace testclasses {
 			return *this;
 		}
 
+		ConstructorsAndMemory& operator=(ConstructorsAndMemory&& other) noexcept {
+			cout << "move assignment" << endl;
+			delete[] m_pBuffer;
+			m_pBuffer = other.m_pBuffer;
+			other.m_pBuffer = nullptr;
+			return *this;
+		}
+
+
 		~ConstructorsAndMemory() {
 			cout << "destructor" << endl;
 			delete[] m_pBuffer;
+			delete[] _pBuffer;
 		}
 
 		friend ostream& operator<<(ostream& out, const ConstructorsAndMemory& test);
