@@ -28,7 +28,7 @@ namespace testclasses {
 			}
 
 		}
-
+		//copy constructor
 		ConstructorsAndMemory(const ConstructorsAndMemory& other){
 			cout << "copy constructor" << endl;
 			m_pBuffer = new int[SIZE] {};

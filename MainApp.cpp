@@ -106,11 +106,20 @@ int main()
 		cout << "Section 8 C++ 11 new features !\n";
 
 
-		cout << " Rvalues and LValues!\n";
+		
 
+
+		
+
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
+		cout << " Rvalues and LValues!\n";
 		ConstructorsAndMemory constructorsAndMemory = getConstructorsAndMemory();
 		cout << constructorsAndMemory << endl;
-
 
 		vector<ConstructorsAndMemory> lValVector;
 		lValVector.push_back(ConstructorsAndMemory());
@@ -129,21 +138,18 @@ int main()
 
 		//int* pValue4 = &value1++;
 		int s = 7 + value1; //rvalue
-		
+
 		//int *s = &(7 + value1); 
 		//cout << *s << endl;
 
 		//int* pValue5 = &(value1++);
 		//cout << s << endl;
 
+		const ConstructorsAndMemory& rConstructorsAndMemory = getConstructorsAndMemory();
+		ConstructorsAndMemory cnstructorsAndMemory(ConstructorsAndMemory(1));
+		cout << cnstructorsAndMemory << endl;
 
-		
 
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
 
 		cout << "Constructor and Memory !\n";
 		cout << "Copy elision !\n";
