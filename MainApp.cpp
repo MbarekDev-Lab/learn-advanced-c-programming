@@ -104,12 +104,10 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
+		cout << " Move Constructor: !\n";
+		vector<ConstructorsAndMemory> vec;
+		vec.push_back(ConstructorsAndMemory());
 
-
-		
-
-
-		
 
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;

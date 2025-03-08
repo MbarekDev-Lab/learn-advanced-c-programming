@@ -11,30 +11,54 @@ namespace testclasses {
 	private:
 		static const int SIZE = 100;
 		int *m_pBuffer;
+		int* _pBuffer{nullptr};
 
 	public:
 		ConstructorsAndMemory()  {
 			cout << "No parameter constructor, Default Constructor" << endl;
 			m_pBuffer = new int[SIZE] {};
 			//memset(_pBuffer, 0, sizeof(int) * SIZE);
+			_pBuffer = new int[SIZE] {};
 		}
 
 		ConstructorsAndMemory(int data)  {
 			cout << "parameter constructor" << endl;
 
 			m_pBuffer = new int[SIZE] {};
+			_pBuffer = new int[SIZE] {};
 			for (int i = 0; i < SIZE; i++) {
 				m_pBuffer[i] = 7*data;
+				_pBuffer[i] = 7 * data;
 			}
-
 		}
+
 		//copy constructor
 		ConstructorsAndMemory(const ConstructorsAndMemory& other){
 			cout << "copy constructor" << endl;
 			m_pBuffer = new int[SIZE] {};
+			_pBuffer = new int[SIZE] {};
+			memcpy(_pBuffer, other._pBuffer, SIZE * sizeof(int));
 			memcpy(m_pBuffer, other.m_pBuffer, SIZE * sizeof(int));
-
 		}
+
+			//copy constructor
+		ConstructorsAndMemory(const ConstructorsAndMemory&& other){
+			cout << "copy constructor" << endl;
+			_pBuffer = other._pBuffer;
+
+			memcpy(_pBuffer, other._pBuffer, SIZE * sizeof(int));
+		}
+
+
+		// Move constructor
+		ConstructorsAndMemory(ConstructorsAndMemory&& other) noexcept {
+			cout << "move constructor" << endl;
+			m_pBuffer = other.m_pBuffer;
+			_pBuffer = other._pBuffer;
+			other.m_pBuffer = nullptr;
+			other._pBuffer = nullptr;
+		}
+
 
 		ConstructorsAndMemory& operator=(const ConstructorsAndMemory& other) {
 			cout << "assignment" << endl;
