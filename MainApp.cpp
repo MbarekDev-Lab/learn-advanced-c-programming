@@ -128,13 +128,13 @@ int main()
 
 
 		//int* pValue4 = &value1++;
-		//int s = 7 + value1; //rvalue
+		int s = 7 + value1; //rvalue
 		
 		//int *s = &(7 + value1); 
-		cout << *s << endl;
+		//cout << *s << endl;
 
-		int* pValue5 = &(value1++);
-		cout << s << endl;
+		//int* pValue5 = &(value1++);
+		//cout << s << endl;
 
 
 		
