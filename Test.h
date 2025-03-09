@@ -6,6 +6,23 @@
 using namespace std;
 namespace testclasses {
 
+	class Parent2
+	{
+	public:
+		virtual ~Parent2() = default; // Ensure a virtual destructor for proper cleanup
+
+		void speak() {
+			cout << "parent" << endl;
+		}
+	};
+
+	class Brother2 : public Parent2 {
+	};
+	
+	class Sister2 : public Parent2 {
+	};
+
+
 
 	class ConstructorsAndMemory {
 	private:
@@ -27,8 +44,7 @@ namespace testclasses {
 			m_pBuffer = new int[SIZE] {};
 			_pBuffer = new int[SIZE] {};
 			for (int i = 0; i < SIZE; i++) {
-				m_pBuffer[i] = 7*data;
-				_pBuffer[i] = 7 * data;
+				m_pBuffer[i] = 7*data; 
 			}
 		}
 

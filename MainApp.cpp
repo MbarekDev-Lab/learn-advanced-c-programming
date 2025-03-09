@@ -104,20 +104,80 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
-		cout << " Move Constructor: !\n";
-		vector<ConstructorsAndMemory> vec;
-		vec.push_back(ConstructorsAndMemory());
 
-		// Move assignment operator
-		ConstructorsAndMemory moveAssignment;
+		// statidc casting 
+		Parent2 parent2;
+		Brother2 brother2;
+		Sister2 sister2;
 
-		moveAssignment = getConstructorsAndMemory();
+		//Brother2* bp = &parent2;// not allowed
+		Parent2* pp = &brother2; // allowed
+
+		Brother2* bp = static_cast<Brother2*>(&parent2); //is not safe
+		//cout << bp << endl;
+
+		Parent2* ppb = &brother2;
+		Brother2* pbb = static_cast<Brother2*>(ppb);
+
+		cout <<"pbb  "<< ppb << endl;
+
+		//Parent2&& p = Parent2();
+		Parent2&& p = static_cast<Parent2&&>(parent2); //creates an rvalue reference p
+		p.speak();
+
+
+	//	cout << "p  " << p << endl;
+
+		// dynamic casting
+		/*
+			To safely cast a base class pointer to a derived class pointer, 
+			you should use dynamic_cast. dynamic_cast performs a runtime check to ensure 
+			the validity of the cast and returns nullptr if the cast is not valid.
+
+		// cast to  int:
+		float value = 3.23;
+		// C
+		cout << int(value) << endl;
+		// CPP
+		cout << static_cast<int>(value) << endl;*/
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
+
+		cout << " Move Constructor: !\n";
+		vector<ConstructorsAndMemory> constructorsAndMemoryVector;
+		constructorsAndMemoryVector.push_back(ConstructorsAndMemory());
+
+		// Move assignment operator
+		ConstructorsAndMemory moveAssignment;
+
+		moveAssignment = getConstructorsAndMemory();
 
 		cout << " Rvalues and LValues!\n";
 		ConstructorsAndMemory constructorsAndMemory = getConstructorsAndMemory();
