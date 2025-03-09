@@ -105,6 +105,27 @@ int main()
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
+
+
+
+		
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
+		Parent2 parent2;
+		Brother2 brother2;
+		Parent2* ppb = &brother2; //0x000000319abb8658
+		Brother2* pbb = dynamic_cast<Brother2*>(ppb); //0x00007ff664b0f751 {learn-advanced-c-programming.exe!testclasses::Brother2::`vector deleting destructor'(unsigned int)}
+		if (pbb == nullptr) {
+			cout << "Invalid cast" << endl;
+		}
+		else {
+			cout << "pbb  " << ppb << endl;
+		}
+
 		// statidc casting 
 		Parent2 parent2;
 		Brother2 brother2;
@@ -119,56 +140,27 @@ int main()
 		Parent2* ppb = &brother2;
 		Brother2* pbb = static_cast<Brother2*>(ppb);
 
-		cout <<"pbb  "<< ppb << endl;
+		cout << "pbb  " << ppb << endl;
 
 		//Parent2&& p = Parent2();
 		Parent2&& p = static_cast<Parent2&&>(parent2); //creates an rvalue reference p
 		p.speak();
 
 
-	//	cout << "p  " << p << endl;
+		//	cout << "p  " << p << endl;
+		//  dynamic casting
+			/*
+				To safely cast a base class pointer to a derived class pointer,
+				you should use dynamic_cast. dynamic_cast performs a runtime check to ensure
+				the validity of the cast and returns nullptr if the cast is not valid.
 
-		// dynamic casting
-		/*
-			To safely cast a base class pointer to a derived class pointer, 
-			you should use dynamic_cast. dynamic_cast performs a runtime check to ensure 
-			the validity of the cast and returns nullptr if the cast is not valid.
+			// cast to  int:
+			float value = 3.23;
+			// C
+			cout << int(value) << endl;
+			// CPP
+			cout << static_cast<int>(value) << endl;*/
 
-		// cast to  int:
-		float value = 3.23;
-		// C
-		cout << int(value) << endl;
-		// CPP
-		cout << static_cast<int>(value) << endl;*/
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
 
 		cout << " Move Constructor: !\n";
 		vector<ConstructorsAndMemory> constructorsAndMemoryVector;
