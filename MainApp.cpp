@@ -104,8 +104,20 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
+		cout << "reinterpret_cas !\n";
+		Parent2 parent2;
+		Brother2 brother2;
+		Sister2 sister2;
 
-
+		Parent2* ppb = &brother2;
+		Brother2* pbb = reinterpret_cast<Brother2*>(ppb);
+		Sister2* sbb = reinterpret_cast<Sister2*>(ppb);
+		if (sbb == nullptr) {
+			cout << "Invalid cast" << endl;
+		}
+		else {
+			cout << "pbb  " << sbb << endl;
+		}
 
 
 		
@@ -114,30 +126,27 @@ int main()
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
-
+		// dynamic casting 
 		Parent2 parent2;
 		Brother2 brother2;
+		Sister2 sister2;
+
 		Parent2* ppb = &brother2; //0x000000319abb8658
-		Brother2* pbb = dynamic_cast<Brother2*>(ppb); //0x00007ff664b0f751 {learn-advanced-c-programming.exe!testclasses::Brother2::`vector deleting destructor'(unsigned int)}
-		if (pbb == nullptr) {
+		Brother2* pbb2 = dynamic_cast<Brother2*>(ppb); //0x00007ff664b0f751 {learn-advanced-c-programming.exe!testclasses::Brother2::`vector deleting destructor'(unsigned int)}
+		if (pbb2 == nullptr) {
 			cout << "Invalid cast" << endl;
 		}
 		else {
 			cout << "pbb  " << ppb << endl;
 		}
 
-		// statidc casting 
-		Parent2 parent2;
-		Brother2 brother2;
-		Sister2 sister2;
-
+		// static casting 
 		//Brother2* bp = &parent2;// not allowed
 		Parent2* pp = &brother2; // allowed
 
 		Brother2* bp = static_cast<Brother2*>(&parent2); //is not safe
 		//cout << bp << endl;
 
-		Parent2* ppb = &brother2;
 		Brother2* pbb = static_cast<Brother2*>(ppb);
 
 		cout << "pbb  " << ppb << endl;
