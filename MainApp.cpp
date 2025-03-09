@@ -104,13 +104,38 @@ int main()
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
+
+
+		cout << " forwarding reference !\n";
+		/*
+		 • The&& after auto indicates that checktest is a universal reference.
+			Universal references can bind to both lvalues and rvalues.
+		 •	auto&& is a universal reference, which can bind to both lvalues 
+			and rvalues. In this case, it binds to the rvalue TestCheck().
+		*/
+		
+		 TestCheck testCheck;
+
+		auto&& checktest = testCheck;
+
+		cout << "Check test: " << checktest << endl;
+
+
+		
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
 		cout << "reinterpret_cas !\n";
+		// reinterpret_cast
 		Parent2 parent2;
 		Brother2 brother2;
 		Sister2 sister2;
 
-		Parent2* ppb = &brother2;
-		Brother2* pbb = reinterpret_cast<Brother2*>(ppb);
+		Parent2* ppb = &brother2; //0x000000319abb8658
+		//Brother2* pbb = reinterpret_cast<Brother2*>(ppb);
 		Sister2* sbb = reinterpret_cast<Sister2*>(ppb);
 		if (sbb == nullptr) {
 			cout << "Invalid cast" << endl;
@@ -120,18 +145,8 @@ int main()
 		}
 
 
-		
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
 		// dynamic casting 
-		Parent2 parent2;
-		Brother2 brother2;
-		Sister2 sister2;
-
-		Parent2* ppb = &brother2; //0x000000319abb8658
+	
 		Brother2* pbb2 = dynamic_cast<Brother2*>(ppb); //0x00007ff664b0f751 {learn-advanced-c-programming.exe!testclasses::Brother2::`vector deleting destructor'(unsigned int)}
 		if (pbb2 == nullptr) {
 			cout << "Invalid cast" << endl;

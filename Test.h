@@ -6,6 +6,30 @@
 using namespace std;
 namespace testclasses {
 
+	class TestCheck {
+		friend ostream& operator<<(ostream& out, const TestCheck& obj) {
+			out << "TestCheck object";
+			return out;
+		}
+	};
+
+	void checkTest(TestCheck &check) {
+		cout << "lValue" << endl;
+	}
+
+
+	void checkTest(TestCheck &&check) {
+		cout << "rValue" << endl;
+	}
+
+
+
+
+
+
+
+
+
 	class Parent2
 	{
 	public:
@@ -21,8 +45,6 @@ namespace testclasses {
 	
 	class Sister2 : public Parent2 {
 	};
-
-
 
 	class ConstructorsAndMemory {
 	private:
