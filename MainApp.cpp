@@ -96,16 +96,14 @@ void static checkFun(function<bool(string&)> check) {
 		cout << check(value) << endl;
 }
 
-
-int main()
-{
+int main() {
 	// Begin of Prog
 	cout << "Prog begint here!\n \n";
 	if (1) {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
-
+		cout << "restart cpp !\n";
 		cout << " forwarding reference !\n";
 		/*
 		 • The&& after auto indicates that checktest is a universal reference.
@@ -113,7 +111,7 @@ int main()
 		 •	auto&& is a universal reference, which can bind to both lvalues 
 			and rvalues. In this case, it binds to the rvalue TestCheck().
 		*/
-		
+	
 		 TestCheck testCheck;
 
 		auto&& checktest = testCheck;
@@ -143,7 +141,6 @@ int main()
 		else {
 			cout << "pbb  " << sbb << endl;
 		}
-
 
 		// dynamic casting 
 	

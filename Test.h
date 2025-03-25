@@ -23,13 +23,6 @@ namespace testclasses {
 	}
 
 
-
-
-
-
-
-
-
 	class Parent2
 	{
 	public:
