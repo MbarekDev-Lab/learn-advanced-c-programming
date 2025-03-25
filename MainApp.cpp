@@ -103,7 +103,7 @@ int main() {
 		//Begin of active code
 		cout << "Section 8 C++ 11 new features !\n";
 
-		cout << "restart cpp !\n";
+		cout << "restart cpp 1/25/2025 !\n";
 		cout << " forwarding reference !\n";
 		/*
 		 • The&& after auto indicates that checktest is a universal reference.

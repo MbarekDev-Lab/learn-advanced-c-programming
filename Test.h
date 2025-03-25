@@ -22,7 +22,6 @@ namespace testclasses {
 		cout << "rValue" << endl;
 	}
 
-
 	class Parent2
 	{
 	public:
