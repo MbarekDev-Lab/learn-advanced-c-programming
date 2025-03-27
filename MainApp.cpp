@@ -12,6 +12,7 @@
 #include <array>
 #include <functional>	
 #include<algorithm>
+#include <functional> // For std::bind
 
 // mein includes
 #include "MyExiption.h"
@@ -22,12 +23,11 @@
 #include "AdvacedCPP.h"
 #include "Complex.h"
 #include "ring.h"
+using namespace placeholders;
 
 using namespace std;
 using namespace testclasses;
 using namespace testclassesComplex;
-
-
 
 // Custom function to count strings using a function pointer
 bool static match(const string& text) {
@@ -100,31 +100,79 @@ int main() {
 	// Begin of Prog
 	cout << "Prog begint here!\n \n";
 	if (1) {
-		//Begin of active code
-		cout << "Section 8 C++ 11 new features !\n";
+		// unique_ptr
+		unique_ptr<int> pTest(new int());
+		*pTest = 7;
+		cout << "Finished pTest " << endl;
+		cout << *pTest << endl;
 
-		cout << "restart cpp 1/25/2025 !\n";
-		cout << " forwarding reference !\n";
-		/*
-		 • The&& after auto indicates that checktest is a universal reference.
-			Universal references can bind to both lvalues and rvalues.
-		 •	auto&& is a universal reference, which can bind to both lvalues 
-			and rvalues. In this case, it binds to the rvalue TestCheck().
-		*/
+		unique_ptr<int> pTestSmart = make_unique<int>(7);  // Allocate an int with value 7
+		cout << "Finished pTestSmart" << endl;
+		cout << *pTestSmart << endl;  // Output: 7
+
+
+		unique_ptr<TestUniquePtr> pSmartTest(new TestUniquePtr);
+		pSmartTest->run();  // Call member function
+
+
+		//unique_ptr<TestUniquePtr> ptr = make_unique<TestUniquePtr>();
+		//ptr->run();  // Call member function
+
 	
-		 TestCheck testCheck;
-
-		auto&& checktest = testCheck;
-
-		cout << "Check test: " << checktest << endl;
-
-
-		
 		//End of active code 
 		std::cout <<"\n \n End of active code : ! "<<endl;
 	}
 	else {
 		cout << "Section 8 C++ 11 new features !\n";
+
+
+		BindTest bindTest;
+		//bindTest.add(1,2,3);
+		//cout << bindTest.add(1, 2, 3) << endl;
+		//auto calculate = bind(&BindTest::add, bindTest, 1, 2, 3);
+		//auto calculate = bind(BindTest::add, _1, _2, _3);
+		//cout << calculate(10,20,30) << endl;
+
+		// bind add with fixed parameters
+		//auto calculate = std::bind(&BindTest::add, bindTest, 2, 100, 1);
+		//cout << "Result of add: " << calculate() << endl;  // Calls bindTest.add(2, 100, 1)
+
+		//auto calculateDynamic = std::bind(&BindTest::add, bindTest, _1, _2, 10);
+		//int result = bindTest.run(calculateDynamic);  // Calls add with (7, 3, 10)
+		// 
+		// Bind add with fixed parameters
+		auto calculate = std::bind(&BindTest::add, std::ref(bindTest), 2, 100, 1);
+		cout << "Result of add: " << calculate() << endl;  // Calls bindTest.add(2, 100, 1)
+
+		// Bind add dynamically with placeholders
+		auto calculateDynamic = std::bind(&BindTest::add, std::ref(bindTest), _1, _2, 10);
+		int result = bindTest.run(calculateDynamic);  // Calls add with (7, 3, 10)
+
+		cout << "Result of run: " << result << endl;
+
+
+		TestCheckIfRvalue obj;
+		call(obj); // Calls lvalue version
+		call(TestCheckIfRvalue()); // Calls rvalue version 
+
+		/*
+		   check(obj);   // Calls lvalue version
+			check(TestCheckIfRvalue()); // Calls rvalue version
+			call(10); // Works fine for built-in types
+			call(obj); // Works fine for objects
+
+		  The&& after auto indicates that checktest is a universal reference.
+			Universal references can bind to both lvalues and rvalues.
+			auto&& is a universal reference, which can bind to both lvalues
+			and rvalues. In this case, it binds to the rvalue TestCheck().
+		*/
+		//TestCheck testCheck;
+
+	   //auto&& checktest = TestCheck();
+
+	   //cout << "Check test: " << checktest << endl;
+
+
 
 		cout << "reinterpret_cas !\n";
 		// reinterpret_cast
@@ -262,7 +310,7 @@ int main() {
 			});
 		cout << count << endl;
 
-		count = count_if(vec2.begin(), vec2.end(), check);
+		//count = count_if(vec2.begin(), vec2.end(), check);
 		cout << count << endl;
 
 		count = count_if(vec2.begin(), vec2.end(), checkStr);
@@ -1011,8 +1059,6 @@ int main() {
 
 		cout << "This is false" << endl;
 	}
-
-
 
 	/*
 		cout << "Size of char: " << sizeof(char) << endl;

@@ -1,10 +1,77 @@
 #pragma once
 #include <iostream>
 #include<string>
+#include <functional> // Required for std::bind
 #include<initializer_list>
+#include <memory> // For std::unique_ptr
 
 using namespace std;
 namespace testclasses {
+
+	class TestUniquePtr {
+	public:
+		TestUniquePtr() {
+			cout << "Create TestUniquePtr constructor" << endl;
+		}
+		~TestUniquePtr() { // Destructor
+			cout << "Destroy TestUniquePtr destructor" << endl;
+		}
+		void run() {
+			cout << "Run TestUniquePtr running" << endl;
+		}
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+	class BindTest {
+	public:
+		void run(function<void()> func) {
+			func();  // Calls the function passed as an argument
+		}
+
+		int add(int a, int b, int c) {
+			cout << a << " , " << b << " , " << c << endl;
+			return a + b + c;
+		}
+
+		int run(function<int(int,int)> func) {
+			return func(7, 3);  // Calls the function passed as an argument);
+			//auto func = bind(&BindTest::add, this, 3, 4, 5);
+			//cout << func() << endl;
+		}
+
+	};
+
+	class TestCheckIfRvalue {
+	public:
+		TestCheckIfRvalue() { cout << "TestCheckIfRvalue Constructor" << endl; }
+	};
+
+	template <class T>
+	void call(T&& arg) {
+		//check(static_cast<T>(arg));
+		check(std::forward<T>(arg));
+		cout << "call(T&&)" << endl;
+	}
+
+	void check(TestCheckIfRvalue& value) { // Lvalue reference
+		cout << "LValue" << endl;
+	}
+
+	void check(TestCheckIfRvalue&& value) { // Rvalue reference
+		cout << "RValue" << endl;
+	}
+
+
 
 	class TestCheck {
 		friend ostream& operator<<(ostream& out, const TestCheck& obj) {
