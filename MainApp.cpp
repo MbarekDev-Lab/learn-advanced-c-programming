@@ -25,7 +25,7 @@
 #include "ring.h"
 using namespace placeholders;
 
-using namespace std;
+
 using namespace testclasses;
 using namespace testclassesComplex;
 
@@ -100,6 +100,35 @@ int main() {
 	// Begin of Prog
 	cout << "Prog begint here!\n \n";
 	if (1) {
+		cout << "Section 8 C++ 11 new features !\n";
+
+		//shared_ptr<TestSharedPtr> pTestSharedPtr(new TestSharedPtr());
+		shared_ptr<TestSharedPtr> pSharedPtr(nullptr);
+		// Trying to use the shared_ptr
+		if (pSharedPtr != nullptr) {
+			pSharedPtr->run();  // This won't run because pSharedPtr is null
+		}
+		else {
+			cout << "pSharedPtr is nullptr, can't run method." << endl;
+		}
+
+		//shared_ptr<TestSharedPtr> pTestSharedPtr(new TestSharedPtr());
+		//shared_ptr<TestSharedPtr> pTestSharedPtr3 = pTestSharedPtr;
+		
+		// Using shared_ptr with make_shared
+		shared_ptr<TestSharedPtr> pTestSharedPtr = make_shared<TestSharedPtr>();  // Recommended approach
+		pTestSharedPtr->run();
+
+		// Shared ownership of the object
+		shared_ptr<TestSharedPtr> pTestSharedPtr2 = pTestSharedPtr;
+		shared_ptr<TestSharedPtr> pTestSharedPtr3 = pTestSharedPtr2;
+	
+		//End of active code 
+		std::cout <<"\n \n End of active code : ! "<<endl;
+	}
+	else {
+		cout << "Section 8 C++ 11 new features !\n";
+
 		// unique_ptr
 		unique_ptr<int> pTest(new int());
 		*pTest = 7;
@@ -111,21 +140,15 @@ int main() {
 		cout << "Finished pTestSmart" << endl;
 		cout << *pTestSmart << endl;  // Output: 7
 
+		unique_ptr<TestUniquePtr> ptr = make_unique<TestUniquePtr>();
+		ptr->run();  // Call member function
+
 		unique_ptr<TestUniquePtr[]> pSmartTest(new TestUniquePtr[2]);
 		pSmartTest[1].run();  // Call member function
-		//pSmartTest->run();  // Call member function
-
-
+		//pSmartTest->run();  // not allowed
 
 		//unique_ptr<TestUniquePtr> ptr = make_unique<TestUniquePtr>();
 		//ptr->run();  // Call member function
-
-	
-		//End of active code 
-		std::cout <<"\n \n End of active code : ! "<<endl;
-	}
-	else {
-		cout << "Section 8 C++ 11 new features !\n";
 
 
 		BindTest bindTest;
@@ -534,14 +557,14 @@ int main() {
 		cout << countString(texts, match) << endl;
 
 		//test(3,"");
-		void (*pTest)(int, string);
-		pTest = &test;
+		void (*pTest2)(int, string);
+		pTest2 = &test;
 
 		// other way to call by func pointer 
 		//void (*pTest)(int,string) = test;
 
 		// test call the function 
-		(*pTest)(2,"mbarek");
+		(*pTest2)(2,"mbarek");
 		//cout << countString(texts, pTest) << endl;
 
 		functionPointer.test();

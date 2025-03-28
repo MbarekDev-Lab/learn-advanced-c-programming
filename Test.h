@@ -8,6 +8,21 @@
 using namespace std;
 namespace testclasses {
 
+	class TestSharedPtr {
+	public:
+		TestSharedPtr() {
+			cout << "Create TestSharedPtr constructor" << endl;
+		}
+		
+		void run() {
+			cout << "Run TestSharedPtr running" << endl;
+		}
+
+		~TestSharedPtr() { // Destructor
+			cout << "Destroy TestSharedPtr destructor" << endl;
+		}
+	};
+
 	class TestUniquePtr {
 	public:
 		TestUniquePtr() {
@@ -20,17 +35,6 @@ namespace testclasses {
 			cout << "Run TestUniquePtr running" << endl;
 		}
 	};
-
-
-
-
-
-
-
-
-
-
-
 
 	class BindTest {
 	public:
@@ -71,8 +75,6 @@ namespace testclasses {
 		cout << "RValue" << endl;
 	}
 
-
-
 	class TestCheck {
 		friend ostream& operator<<(ostream& out, const TestCheck& obj) {
 			out << "TestCheck object";
@@ -83,7 +85,6 @@ namespace testclasses {
 	void checkTest(TestCheck &check) {
 		cout << "lValue" << endl;
 	}
-
 
 	void checkTest(TestCheck &&check) {
 		cout << "rValue" << endl;
@@ -233,9 +234,6 @@ namespace testclasses {
 	ElisionAndOptimization getElisionAndOptimization() {
 		return ElisionAndOptimization();
 	}
-
-
-
 
 	class ParentDelegate {
 		int dogs{5};
@@ -522,9 +520,6 @@ namespace testclasses {
 		bool match(string test) {
 			return test.size() ==  3;
 		}
-
-
-
 	};
 
 	template<class T, class k>
@@ -629,9 +624,5 @@ namespace testclasses {
 		//return a.name < b.name;
 		return a.name < b.name;
 	}
-
-
-
-
 }
 
