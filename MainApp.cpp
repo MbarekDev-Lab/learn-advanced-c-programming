@@ -103,6 +103,7 @@ int main() {
 		// unique_ptr
 		unique_ptr<int> pTest(new int());
 		*pTest = 7;
+
 		cout << "Finished pTest " << endl;
 		cout << *pTest << endl;
 
@@ -110,9 +111,10 @@ int main() {
 		cout << "Finished pTestSmart" << endl;
 		cout << *pTestSmart << endl;  // Output: 7
 
+		unique_ptr<TestUniquePtr[]> pSmartTest(new TestUniquePtr[2]);
+		pSmartTest[1].run();  // Call member function
+		//pSmartTest->run();  // Call member function
 
-		unique_ptr<TestUniquePtr> pSmartTest(new TestUniquePtr);
-		pSmartTest->run();  // Call member function
 
 
 		//unique_ptr<TestUniquePtr> ptr = make_unique<TestUniquePtr>();
